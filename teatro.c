@@ -7,10 +7,6 @@ char estudante, professor, nome, idoso, outro;
 
 int main (int argc, char *argv[])
 {
-    // int ingresso, peca, horario=0, pagar;
-    // int cpf, tipoPessoa, b, idade, numero;
-    // char estudante, professor, nome, idoso, outro;
-
     do
     {
         printf("\n\n");
@@ -312,45 +308,44 @@ int main (int argc, char *argv[])
                             printf("Nao ha mais bilhetes disponiveis para esta peca.\n");
                         }
                     }
-                break;
                 }
+            system("pause");
+            break;
                    
-                case 3:
-                    system("cls");
-                    printf("--------------------------------------\n");
-                    printf("IMPRIMINDO INGRESSO\n");
-                    printf("--------------------------------------\n");
-                    printf("%c", &nome);
-                    printf("%i", &peca);
-                    printf("%i", &horario);
-                    printf("%i", &ingresso);
-                    printf("%i", &pagar);
+            case 3:
+                system("cls");
 
-                    break;
+                printf("\n\n");
+                printf("\n=== BEM VINDO AO TEATRO DOS SONHOS ===\n");
+                printf("\n\n");printf("--------------------------------------\n");
+                printf("\n\nIMPRIMINDO INGRESSO\n");
+                printf("--------------------------------------\n");
+                printf("\n%c", &nome);
+                printf("\n%i", &peca);
+                printf("\n%i", &horario);
+                printf("\n%i", &ingresso);
+                printf("\n%i", &pagar);
+            
+            system("pause");
+            break;
 
+            case 4:
+                system("cls");
 
+                printf("\n\n");
+                printf("\n=== BEM VINDO AO TEATRO DOS SONHOS ===\n");
+                printf("FATURAMENTO\n");
 
-                   case 4:
+            system("pause");
+            break;
 
-                       system("cls");
-
-                       printf("FATURAMENTO\n");
-
-
-                   break;
-
-                   case 5:
-                       system("cls");
-                       printf("Fim da Sessao\n");
-                       break;
-
-                    }
-
-    
-    
-        }                
-    
-    } while(peca!=5);
+            case 5:
+                system("cls");
+                printf("Fim da Sessao\n");
+            break;
+        }
+    }                
+    while(peca!=5);
 
 system("pause");
 return 0;
