@@ -26,6 +26,8 @@ int main (int argc, char *argv[])
         {
             default:
                 printf("* OPCAO INVALIDA *\n");
+            system("pause");
+            break;
 
             case 1:
                 system("cls");
