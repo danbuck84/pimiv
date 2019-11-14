@@ -5,9 +5,9 @@
 # Análise e Desenvolvimento de Sistemas
 
 **Alunos**
-- André Luiz  :: RA ?
+- André Luiz  :: RA 0506459
 - Daniel Buck :: RA 0537043
-- Samara Lara :: RA ?
+- Samara Lara :: RA 1953505
 
 # Sobre o PIM IV
 
