@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include <unistd.h>
 
 int ingresso, peca, horario = 0, pagar;
 int cpf, tipoPessoa, b, idade, numero;
@@ -15,9 +16,10 @@ int main (int argc, char *argv[])
         printf("**************************************\n");
 		printf("[1] - Fazer cadastro\n");
 		printf("[2] - Comprar Ingressos\n");
-		printf("[3] - Imprimir Ingresso\n");
-		printf("[4] - Faturamento\n");
-		printf("[5] - Encerrar o Sistema\n");
+        printf("[3] - Escolher poltrona\n");
+		printf("[4] - Imprimir Ingresso\n");
+		printf("[5] - Faturamento\n");
+		printf("[6] - Encerrar o Sistema\n");
 		printf("**************************************\n");
 		printf("\n");
         scanf("%d", &peca);
@@ -316,6 +318,192 @@ int main (int argc, char *argv[])
                    
             case 3:
                 system("cls");
+            
+                printf("\n\n");
+                printf("\n=== BEM VINDO AO TEATRO DOS SONHOS ===\n");
+                printf("\n\n");
+                printf("*** ESCOLHA DE POLTRONAS ***\n\n");
+                int menu,
+                    iterator,	
+                    mainMenuOptionPicked,
+                    pickedSeat, 
+                    cancelar, 
+                    max_poltronas,
+                    position,
+                    ocupadas,
+                    mainMenuSelected,
+                    numeroPoltrona;
+                    
+                int poltronaWasDeleted = 0;
+                int poltronaWasSelected = 0;
+                
+                int matriz[20] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+                                
+                void mainMenu()
+                {
+                    system("cls");         
+                    printf("\n\n");
+                    printf("[1] Selecionar poltrona.\n");
+                    printf("[2] Visualizar poltronas disponiveis.\n");
+                    printf("[3] Visualizar poltronas selecionadas.\n");
+                    printf("[4] Cancelar   poltrona.\n");
+                    printf("[5] Sair.\n");
+                    printf("Selecione uma opcao:\n");
+                    scanf("%d", & mainMenuOptionPicked);
+                }
+                
+                int checkSeatNumber()
+                {
+                    int ret = 1;
+                    
+                    if(pickedSeat < 1 || pickedSeat > 20)
+                    {
+                        printf("Numero de poltrona invalido.\n");
+                        ret = 0;
+                    }
+                    
+                    for(iterator = 0 ; iterator < 20; iterator ++)
+                    {
+                    if (matriz[iterator] ==  pickedSeat)
+                    {
+                            printf("Numero de poltrona indisponivel.\n");
+                            ret = 0;           	
+                    }
+                    }
+                    return ret;
+                }
+                
+                while (mainMenuOptionPicked != 5)
+                {
+                    mainMenu();
+                    
+                    switch(mainMenuOptionPicked)
+                    {
+                        case 1: 
+                            printf("Digite o numero da poltrona desejada:\n");
+                            scanf("%d", &pickedSeat);
+                            
+                            while (checkSeatNumber(pickedSeat) == 0)
+                            {
+                                printf("Digite o numero da poltrona desejada:\n");
+                                scanf("%d", &pickedSeat);
+                            }
+                            
+                            matriz[pickedSeat - 1] = pickedSeat;
+                            printf("Poltrona %d reservada! \n",pickedSeat);
+                            printf("Pressione qualquer tecla para voltar ao menu principal.");
+                            getch();
+                            
+                        break;
+                        case 2: 
+                        
+                            printf("Poltronas dispon�veis:\n");
+                            
+                            for(iterator =0 ;  iterator <20; iterator ++)
+                            {
+                                
+                            if (matriz[iterator] == 0)
+                            {
+                                printf("Poltrona: %d \n",iterator + 1);
+                            }
+                            }
+                            printf("Pressione qualquer tecla para voltar ao menu principal.");
+                            getch();
+                            
+                        break;                           
+                        case 3:
+                            
+                            printf("Poltronas selecionadas:\n");
+                            
+                            for(iterator =0 ;  iterator <20; iterator ++)
+                            {
+                            if (matriz[iterator] != 0)
+                            {
+                                printf("Poltrona: %d \n",iterator + 1);
+                                poltronaWasSelected = 1;
+                            }
+                            }
+                            
+                            if (poltronaWasSelected==0)
+                            {
+                                printf("Nenhuma poltrona foi selecionada ate o momento \n");
+                            }
+                            
+                            printf("Pressione qualquer tecla para voltar ao menu principal.");
+                            getch();
+                            
+                        break;
+                        case 4:
+                            printf("[1] Deseja cancelar uma poltrona?\n");
+                            printf("[2] Deseja cancelar todas as poltronas?\n");
+                
+                            scanf("%d",& cancelar);
+                            
+                            if(cancelar == 1)
+                            {
+                                printf("Digite o numero da poltrona para cancelar \n");
+                                scanf("%d",& numeroPoltrona);
+
+                                for(iterator=0; iterator<20; iterator++)
+                                {
+                                    if (matriz[iterator]== numeroPoltrona)
+                                    {                             
+                                        matriz[numeroPoltrona-1]=0;
+                                        poltronaWasDeleted = 1;
+                                        printf("Poltrona %d cancelada com sucesso.\n",numeroPoltrona);
+                                        printf("Pressione qualquer tecla para voltar ao menu principal.");
+                                        getch();
+                                    }
+                                }
+                                
+                                if (poltronaWasDeleted == 0)
+                                {
+                                    printf("Nao ha nenhuma poltrona %d para efetuar cancelamento\n",numeroPoltrona);
+                                    printf("Pressione qualquer tecla para voltar ao menu principal.");
+                                    getch();
+                                }					   
+                            }
+                            else if (cancelar == 2)
+                            {
+                                for(iterator=0; iterator<20; iterator++)
+                                {
+                                    if (matriz[iterator] != 0)
+                                    { 
+                                        printf("Poltrona %d cancelada com sucesso.\n",iterator);
+                                        matriz[iterator]=0;
+                                        poltronaWasDeleted = 1;
+                                    }
+                                }
+                                
+                                if (poltronaWasDeleted == 0)
+                                {
+                                    printf("Nao ha poltronas para efetuar cancelamento\n");
+                                }
+                                
+                                printf("Pressione qualquer tecla para voltar ao menu principal.");
+                                getch();
+                            }
+                            else
+                            {
+                                printf("Opcao incorreta\n");	
+                                printf("Pressione qualquer tecla para voltar ao menu principal.");
+                                getch();	
+                            }
+                        break;
+                        
+                        case 5:
+                            break;
+                        
+                        default:
+                            printf("Opcao incorreta\n");
+                            printf("Pressione qualquer tecla para voltar ao menu principal.");
+                            getch();
+                            break;
+                    }
+                }
+            
+            case 4:
+                system("cls");
 
                 printf("\n\n");
                 printf("\n=== BEM VINDO AO TEATRO DOS SONHOS ===\n");
@@ -331,7 +519,7 @@ int main (int argc, char *argv[])
             system("pause");
             break;
 
-            case 4:
+            case 5:
                 system("cls");
 
                 printf("\n\n");
@@ -341,7 +529,7 @@ int main (int argc, char *argv[])
             system("pause");
             break;
 
-            case 5:
+            case 6:
                 system("cls");
                 printf("Fim da Sessao\n");
             break;
