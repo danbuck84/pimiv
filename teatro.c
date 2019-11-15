@@ -496,15 +496,13 @@ int main (int argc, char *argv[])
 
                 printf("\n\n");
                 printf("\n=== BEM VINDO AO TEATRO DOS SONHOS ===\n");
-                printf("\n\n");printf("--------------------------------------\n");
+                printf("\n\n");
+		printf("--------------------------------------\n");
                 printf("\n\nIMPRIMINDO INGRESSO\n");
                 printf("--------------------------------------\n");
-                printf("\n%c", &nome);
-                printf("\n%i", &peca);
-                printf("\n%i", &horario);
-                printf("\n%i", &ingresso);
-                printf("\n%i", &pagar);
-            
+                printf("\n Nome: %c \n Idade:%i \n CPF: %i \n \n ", nome, idade, cpf);
+                printf("\n Peca:00%d \nAssento: %d\n Ingresso:R$ %i \n Horario:%d \n Valor: %i \n \n ", peca, numeroPoltrona, ingresso, horario, pagar );
+			
             break;
 
             // CASE 5: FATURAMENTO
