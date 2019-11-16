@@ -1,0 +1,80 @@
+TELA DE BOAS VINDAS
+[0] ADMIN
+[1] USUARIO 
+
+*ADMIN*
+    SENHA
+    CLIENTE
+        Cadastro
+            Nome
+            Idade
+            CPF
+            Tipo Pessoa
+                Estudante
+                Professor
+                Idoso
+                Crianca Carente (S/N)
+            VOLTAR
+        Consulta
+            Nome
+            CPF
+            VOLTAR
+    PECAS
+        Cadastro
+            Nome da Peca
+            Dias da Semana
+            Horario
+            VOLTAR
+        Consulta
+            Nome da Peca
+            Dias da Semana
+            Horario
+            VOLTAR
+    CAIXA
+        Peca
+            Lugares vendidos
+            TOTAL
+        TOTAL GERAL
+        VOLTAR
+
+*USUARIO*
+    CLIENTE
+        Cadastro
+            Nome
+            Idade
+            CPF
+            Tipo Pessoa
+                Estudante
+                Professor
+                Idoso
+                Crianca Carente (S/N)
+            VOLTAR
+        Consulta
+            Nome
+            CPF
+            VOLTAR
+    PECAS
+        Consulta
+            Nome da Peca
+            Dias da Semana
+            Horario
+            VOLTAR
+        Comprar Ingresso
+            Nome do Cliente
+            Peca
+                Dias da Semana
+                Horario
+                Poltrona
+                VOLTAR
+            Visualizar Ingresso
+                Nome do Cliente
+                Peca
+                Horario
+                Poltrona
+                Preco
+
+(50% de desconto para:
+    - crianças de 0 a 12 anos
+    - idosos 60 anos
+    - professores)
+(se Crianca Carente e se terça-feira, 100% de desconto)
