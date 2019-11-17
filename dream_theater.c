@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
-#include<unistd.h>
+// #include<unistd.h>
 #define SIZE 200
 
 char clientName[SIZE][50];
@@ -17,14 +17,16 @@ int dateTest;
 int option;
 int main_function;
 
+// void admin();
+// void user();
 void clientEntries();
 void clientSearch();
 void clientList();
 void playEntries();
-// void playSearch();
+void playSearch();
 void playList();
-// void admin();
-// void user();
+void ticketPurchase();
+
 void weekDayCalculation(int day,int month,int year);
 
 // MENU PRINCIPAL
@@ -34,12 +36,16 @@ int main(void)
     {
         system("cls");
         printf("\n---- MENU ----\n");
-		printf("\n[1] - Cadastrar cliente");
+		printf("\n*** CLIENTES ***\n");
+        printf("\n[1] - Cadastrar cliente");
 		printf("\n[2] - Pesquisar cliente");
-        printf("\n[3] - Listar cliente");
-		printf("\n[4] - Cadastrar Peca");
-        printf("\n[5] - Listar Pecas");
-		printf("\n[6] - Sair");
+        printf("\n[3] - Listar cliente\n");
+		printf("\n\n*** PECAS ***\n");
+        printf("\n[4] - Cadastrar Peca");
+        printf("\n[5] - Pesquisar Peca");
+        printf("\n[6] - Listar Pecas");
+        printf("\n[7] - Comprar Ingreco");
+        printf("\n\n[8] - Sair");
 		printf("\n\nDigite uma opcao: ");
 		scanf("%d", &option);
 
@@ -60,13 +66,20 @@ int main(void)
             case 4:
                 playEntries();
                 break;
-            
+
             case 5:
+                playSearch();
+                break;
+            
+            case 6:
                 playList();
-                getchar();
+                break;
+            
+            case 7:
+                ticketPurchase();
                 break;
 
-            case 6:
+            case 8:
                 system("exit");
                 break;
             
@@ -76,7 +89,7 @@ int main(void)
 				break;
         }
     }
-    while(option != 6);
+    while(option != 8);
 }
 
 // CADASTRAR CLIENTE
@@ -210,6 +223,34 @@ void playEntries()
     while(option == 1);
 }
 
+// PESQUISAR PECA
+void playSearch()
+{
+    int i, option;
+    char playNameSearch[50];
+
+    do
+    {
+        printf("\nDigite o nome da peca: ");
+        scanf("%s", &playNameSearch);
+        for(i = 0; i < SIZE; i++)
+        {
+            if(strcmp(playName[i], playNameSearch) == 0)
+            {
+                printf("\nNome da peca: %s\nData da peca: %d/%d/%d\n\n", playName[i], playDay[i], playMonth[i], playYear[i]);
+            }
+            else
+            {
+                printf("\nPeca nao encontrada");
+            }
+        }
+    }
+    while(option == 1);
+
+    printf("\nDigite [1] para pesquisar outro nome ou [0] para sair: ");
+    scanf("%d", &option);
+}
+
 // LISTAR PECAS
 void playList()
 {
@@ -228,7 +269,7 @@ void playList()
 	}
 }
 
-void weekDayCalculation(int day,int month,int year)
+void weekDayCalculation(int day, int month, int year)
 {
     switch (month) 
     {
@@ -262,4 +303,11 @@ void weekDayCalculation(int day,int month,int year)
             case 6: printf("Domingo\n"); break;
         }
     }
+}
+
+void ticketPurchase()
+{
+    printf("\nDigite o nome da peca: ");
+    scanf("%s", playName);
+    
 }

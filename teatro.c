@@ -6,6 +6,17 @@ int ingresso, peca, horario = 0, pagar;
 int cpf, tipoPessoa, b, idade, numero;
 char estudante, professor, nome, idoso, outro;
 
+int menu,
+    iterator,
+    mainMenuOptionPicked,
+    pickedSeat,
+    cancelar,
+    max_poltronas,
+    position,
+    ocupadas,
+    mainMenuSelected,
+    numeroPoltrona;
+
 int main (int argc, char *argv[])
 {
     do
@@ -75,10 +86,9 @@ int main (int argc, char *argv[])
                 printf("\n=== BEM VINDO AO TEATRO DOS SONHOS ===\n");
                 printf("\n\n");
                 printf("*** VENDA DE INGRESSOS ***\n\n");
-                printf("Escolha uma das opcoes:\n\n");
-                printf("| Pecas em cartaz |\n\n");
+                printf("Escolha uma das pecas em cartaz:\n\n");
                 printf("[1] Peter Pan - O musical\n[2] Como respirar em dias de chuva\n\n");
-                printf("*** ATENCAO ***\nSomente 20 lugares disponiveis!\n\n");
+                printf("\n*** ATENCAO ***\nSomente %d lugares disponiveis!\n\n", iterator);
                 printf("Digite [0] para sair\n\n");
                 scanf("%i",&peca);
 
@@ -91,15 +101,15 @@ int main (int argc, char *argv[])
                 {
                     printf("Peca 1: Peter Pan - O musical\n\n");
                     printf("Datas e Sessoes\n\n");
-                    printf("Data[1]: Sessao: 12:00\n");
-                    printf("Data[2]: Sessao: 13:00\n");
-                    printf("Data[3]: Sessao: 14:00\n");
+                    printf("[1] Terca-feira as 12:00\n");
+                    printf("[2] Quinta-feira as 13:00\n");
+                    printf("[3] Sabado as 14:00\n");
                     printf("\nComprar bilhete para qual data e sessao? ");
                     scanf("%i", &horario);
                     
                     if(horario == 1)
                     {
-                        printf("\nInforme a quantidade de bilhetes que deseja comprar: \n");
+                        printf("\nInforme a quantidade de bilhetes que deseja comprar: ");
                         scanf("%i", &ingresso);
 
                         if(ingresso <= 20)
@@ -114,14 +124,14 @@ int main (int argc, char *argv[])
                             if(pagar == 1)
                             {
                                 printf("Forma de Pagamento: Inteira\n\n");
-                                printf("Data e sessao escolhidas: 12:00 - Peter Pan - O musical\n\n");
+                                printf("Data e sessao escolhidas: Terca-feira as 12:00 - Peter Pan - O musical\n\n");
                                 printf("Seu bilhete foi adquirido com sucesso\n");
                                 printf("Tenha um otimo espetaculo!\n");
                             }
                             else if(pagar == 2)
                             {
                                 printf("Forma de Pagamento: Meia\n\n");
-                                printf("Data e sessao escolhidas: 12:00 - Peter Pan - O musical\n\n");
+                                printf("Data e sessao escolhidas: Terca-feira as 12:00 - Peter Pan - O musical\n\n");
                                 printf("Seu bilhete foi adquirido com sucesso\n");
                                 printf("Tenha um otimo espetaculo!\n");
                             }
@@ -133,7 +143,7 @@ int main (int argc, char *argv[])
                     }
                     if(horario == 2)
                     {
-                        printf("\nInforme a quantidade de bilhetes que deseja comprar: \n");
+                        printf("\nInforme a quantidade de bilhetes que deseja comprar: ");
                         scanf("%i", &ingresso);
 
                         if(ingresso <= 20)
@@ -148,14 +158,14 @@ int main (int argc, char *argv[])
                             if(pagar == 1)
                             {
                                 printf("Forma de Pagamento: Inteira\n\n");
-                                printf("Data e sessao escolhidas: 13:00 - Peter Pan - O musical\n\n");
+                                printf("Data e sessao escolhidas: Quinta-feira as 13:00 - Peter Pan - O musical\n\n");
                                 printf("Seu bilhete foi adquirido com sucesso\n");
                                 printf("Tenha um otimo espetaculo!\n");
                             }
                             else if(pagar == 2)
                             {
                                 printf("Forma de Pagamento: Meia\n\n");
-                                printf("Data e sessao escolhidas: 13:00 - Peter Pan - O musical\n\n");
+                                printf("Data e sessao escolhidas: Quinta-feira as 13:00 - Peter Pan - O musical\n\n");
                                 printf("Seu bilhete foi adquirido com sucesso\n");
                                 printf("Tenha um otimo espetaculo!\n");
                             }
@@ -167,7 +177,7 @@ int main (int argc, char *argv[])
                     }
                     if(horario == 3)
                     {
-                        printf("\nInforme a quantidade de bilhetes que deseja comprar: \n");
+                        printf("\nInforme a quantidade de bilhetes que deseja comprar: ");
                         scanf("%i", &ingresso);
 
                         if(ingresso <= 20)
@@ -182,14 +192,14 @@ int main (int argc, char *argv[])
                             if(pagar == 1)
                             {
                                 printf("Forma de Pagamento: Inteira\n\n");
-                                printf("Data e sessao escolhidas: 14:00 - Peter Pan - O musical\n\n");
+                                printf("Data e sessao escolhidas: Sabado as 14:00 - Peter Pan - O musical\n\n");
                                 printf("Seu bilhete foi adquirido com sucesso\n");
                                 printf("Tenha um otimo espetaculo!\n");
                             }
                             else if(pagar == 2)
                             {
                                 printf("Forma de Pagamento: Meia\n\n");
-                                printf("Data e sessao escolhidas: 14:00 - Peter Pan - O musical\n\n");
+                                printf("Data e sessao escolhidas: Sabado as 14:00 - Peter Pan - O musical\n\n");
                                 printf("Seu bilhete foi adquirido com sucesso\n");
                                 printf("Tenha um otimo espetaculo!\n");
                             }
@@ -205,9 +215,9 @@ int main (int argc, char *argv[])
                 {
                     printf("Peca 2: Como respirar em dias de chuva\n\n");
                     printf("Datas e Sessoes\n\n");
-                    printf("Data[1]: Sessao: 12:00\n");
-                    printf("Data[2]: Sessao: 13:00\n");
-                    printf("Data[3]: Sessao: 14:00\n");
+                    printf("[1] Terca-feira as 12:00\n");
+                    printf("[2] Quinta-feira as 13:00\n");
+                    printf("[3] Sabado as 14:00\n");
                     printf("\nComprar bilhete para qual data e sessao? ");
                     scanf("%i", &horario);
                     
@@ -228,14 +238,14 @@ int main (int argc, char *argv[])
                             if(pagar == 1)
                             {
                                 printf("Forma de Pagamento: Inteira\n\n");
-                                printf("Data e sessao escolhidas: 12:00 - Como respirar em dias de chuva\n\n");
+                                printf("Data e sessao escolhidas: Terca-feira as 12:00 - Como respirar em dias de chuva\n\n");
                                 printf("Seu bilhete foi adquirido com sucesso\n");
                                 printf("Tenha um otimo espetaculo!\n");
                             }
                             else if(pagar == 2)
                             {
                                 printf("Forma de Pagamento: Meia\n\n");
-                                printf("Data e sessao escolhidas: 12:00 - Como respirar em dias de chuva\n\n");
+                                printf("Data e sessao escolhidas: Terca-feira as 12:00 - Como respirar em dias de chuva\n\n");
                                 printf("Seu bilhete foi adquirido com sucesso\n");
                                 printf("Tenha um otimo espetaculo!\n");
                             }
@@ -262,14 +272,14 @@ int main (int argc, char *argv[])
                             if(pagar == 1)
                             {
                                 printf("Forma de Pagamento: Inteira\n\n");
-                                printf("Data e sessao escolhidas: 13:00 - Como respirar em dias de chuva\n\n");
+                                printf("Data e sessao escolhidas: Quinta-feira as 13:00 - Como respirar em dias de chuva\n\n");
                                 printf("Seu bilhete foi adquirido com sucesso\n");
                                 printf("Tenha um otimo espetaculo!\n");
                             }
                             else if(pagar == 2)
                             {
                                 printf("Forma de Pagamento: Meia\n\n");
-                                printf("Data e sessao escolhidas: 13:00 - Como respirar em dias de chuva\n\n");
+                                printf("Data e sessao escolhidas: Quinta-feira as 13:00 - Como respirar em dias de chuva\n\n");
                                 printf("Seu bilhete foi adquirido com sucesso\n");
                                 printf("Tenha um otimo espetaculo!\n");
                             }
@@ -296,14 +306,14 @@ int main (int argc, char *argv[])
                             if(pagar == 1)
                             {
                                 printf("Forma de Pagamento: Inteira\n\n");
-                                printf("Data e sessao escolhidas: 14:00 - Como respirar em dias de chuva\n\n");
+                                printf("Data e sessao escolhidas: Sabado as 14:00 - Como respirar em dias de chuva\n\n");
                                 printf("Seu bilhete foi adquirido com sucesso\n");
                                 printf("Tenha um otimo espetaculo!\n");
                             }
                             else if(pagar == 2)
                             {
                                 printf("Forma de Pagamento: Meia\n\n");
-                                printf("Data e sessao escolhidas: 14:00 - Como respirar em dias de chuva\n\n");
+                                printf("Data e sessao escolhidas: Sabado as 14:00 - Como respirar em dias de chuva\n\n");
                                 printf("Seu bilhete foi adquirido com sucesso\n");
                                 printf("Tenha um otimo espetaculo!\n");
                             }
@@ -318,17 +328,6 @@ int main (int argc, char *argv[])
                    
             // CASE 3: ESCOLHA DE POLTRONAS
             case 3: ;
-                int menu,
-                    iterator,
-                    mainMenuOptionPicked,
-                    pickedSeat,
-                    cancelar,
-                    max_poltronas,
-                    position,
-                    ocupadas,
-                    mainMenuSelected,
-                    numeroPoltrona;
-                    
                 int poltronaWasDeleted = 0;
                 int poltronaWasSelected = 0;
                 
@@ -348,8 +347,8 @@ int main (int argc, char *argv[])
                     printf("[3] Poltronas selecionadas\n");
                     printf("[4] Cancelar poltrona\n");
                     printf("[5] Sair\n");
-                    printf("\nSelecione uma opcao: ");
                     printf("**************************************\n");
+                    printf("\nSelecione uma opcao: ");
                     scanf("%d", & mainMenuOptionPicked);
                 }
                 
@@ -498,11 +497,10 @@ int main (int argc, char *argv[])
                 printf("\n=== BEM VINDO AO TEATRO DOS SONHOS ===\n");
                 printf("\n\n");
 		        printf("--------------------------------------\n");
-                printf("\nIMPRIMINDO INGRESSO\n");
+                printf("IMPRIMINDO INGRESSO\n");
                 printf("--------------------------------------\n");
-                printf("\n Nome: %c \n Idade:%i \n CPF: %i \n \n ", nome, idade, cpf);
-                printf("\n Peca:00%d \nAssento: %d\n Ingresso:R$ %i \n Horario:%d \n Valor: %i \n \n ", peca, numeroPoltrona, ingresso, horario, pagar );
-			
+                printf("\nNome: %s\nIdade: %d\nCPF: %d\n\n", nome, idade, cpf);
+                printf("\n Peca: 00%d \nAssento: %d\n Ingresso: R$ %d \nHorario: %d \nValor: %d\n\n", peca, numeroPoltrona, ingresso, horario, pagar);
             break;
 
             // CASE 5: FATURAMENTO
@@ -517,8 +515,8 @@ int main (int argc, char *argv[])
 
             // CASE 6: ENCERRAMENTO DO SISTEMA
             case 6:
-                system("cls");
-                printf("Fim da Sessao\n");
+                system("exit");
+                printf("\nFim da Sessao\n");
             break;
         }
     }                
